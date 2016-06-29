@@ -1,0 +1,3 @@
+set allow-^S-and-^Q on
+auto-execute-command auto-fill /tmp/Re
+auto-execute-command auto-fill .*/Mail/*

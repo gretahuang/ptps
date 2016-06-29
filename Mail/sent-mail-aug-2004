@@ -1,0 +1,49 @@
+From ptps@OCF.Berkeley.EDU Sun Apr 25 23:22:16 2004 -0700
+Status: 
+X-Status: 
+X-Keywords:
+Date: Sun, 25 Apr 2004 23:22:15 -0700 (PDT)
+From: People's Testing Prep Service <ptps@OCF.Berkeley.EDU>
+To: bhamburger@gmail.com
+Subject: Your MySQL account information (fwd)
+Message-ID: <Pine.SOL.4.58.0404252321590.29457@death.OCF.Berkeley.EDU>
+MIME-Version: 1.0
+Content-Type: TEXT/PLAIN; charset=US-ASCII
+
+
+
+---------- Forwarded message ----------
+Date: Sun, 25 Apr 2004 23:19:40 -0700 (PDT)
+From: staff@OCF.Berkeley.EDU
+To: ptps@OCF.Berkeley.EDU
+Subject: Your MySQL account information
+
+Hello,
+
+An account has been created for you on our MySQL server:
+
+    Hostname: death.ocf (AKA www.OCF)
+    Username: ptps
+    Database: ptps.*
+
+You should have complete access to any table named 'ptps.*'
+(i.e., the ptps database), but not the rest of the server.
+You can access the MySQL server from an OCF command prompt by
+typing:
+
+    mysql -h death -u ptps -p
+
+and entering your password. (Note: Please don't provide a
+password on the command line with the -p, as anyone who happens
+to run a command like 'w' can see it plainly.) If you want to
+change your password, just connect to the MySQL server and type
+in the following at the MySQL command prompt:
+
+    set password = PASSWORD('new_password');
+
+where 'new_password' is your new password (keep the single quotes).
+Feel free to email us at staff@OCF.Berkeley.EDU if you have any
+other questions.
+
+-OCF Staff
+

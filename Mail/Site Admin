@@ -1,0 +1,453 @@
+From ptps@flood.OCF.Berkeley.EDU  Wed Jan 31 00:33:19 2007
+Return-Path: <steven@steven676.net>
+Received: from sandstorm.OCF.Berkeley.EDU (IDENT:0@sandstorm.OCF.Berkeley.EDU [192.58.221.218])
+	by war.OCF.Berkeley.EDU (8.13.7/8.9.3) with ESMTP+TLSv1/SSLv3 id l0V8E1AN029786
+	for <ptps@ocf.berkeley.edu>; Wed, 31 Jan 2007 00:25:02 -0800 (PST)
+	(envelope-from steven@steven676.net)
+Received: from smtp-out1.berkeley.edu (smtp-out1.Berkeley.EDU [128.32.61.106])
+	by sandstorm.OCF.Berkeley.EDU (8.13.7/8.9.3) with ESMTP+TLSv1/SSLv3 id l0V7WI10018663
+	for <ptps@OCF.Berkeley.EDU>; Tue, 30 Jan 2007 23:32:52 -0800 (PST)
+	(envelope-from steven@steven676.net)
+Received: from asuc-wlan-net-5.airbears.berkeley.edu ([136.152.138.144] helo=sandcity.steven676.net)
+	by fe1.calmail with esmtpsa (TLSv1:AES256-SHA:256)
+	(Exim 4.65)
+	(auth plain:s_luo@berkeley.edu)
+	(envelope-from <steven@steven676.net>)
+	id 1HC9tw-0004ds-58
+	for ptps@OCF.Berkeley.EDU; Tue, 30 Jan 2007 23:29:04 -0800
+Received: by sandcity.steven676.net (Postfix, from userid 1000)
+	id 066AFCC299; Tue, 30 Jan 2007 23:29:04 -0800 (PST)
+Date: Tue, 30 Jan 2007 23:29:03 -0800
+From: Steven Luo <sluo@OCF.Berkeley.EDU>
+To: ptps@OCF.Berkeley.EDU
+Subject: Re: mysql server account
+Message-ID: <20070131072903.GB18703@steven676.net>
+References: <1601.206.169.168.190.1170220988.squirrel@webmail.ocf.berkeley.edu>
+MIME-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="7ZAtKRhVyVSsbBD2"
+Content-Disposition: inline
+In-Reply-To: <1601.206.169.168.190.1170220988.squirrel@webmail.ocf.berkeley.edu>
+User-Agent: Mutt/1.5.13 (2006-08-11)
+X-Milter: Spamilter (Receiver: sandstorm.OCF.Berkeley.EDU; Sender-ip: 128.32.61.106; Sender-helo: smtp-out1.berkeley.edu;)
+X-Spam-Status: No, score=-2.5 required=5.0 tests=BAYES_00,FORGED_RCVD_HELO,
+	SPF_PASS autolearn=ham version=3.1.7
+X-Spam-Checker-Version: SpamAssassin 3.1.7 (2006-10-05)
+Status: R
+Content-Length: 1210
+X-Keywords:                                                                                                                        
+
+
+--7ZAtKRhVyVSsbBD2
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+> Oddly, though, when I tested our form .php file (located on the
+> ocf.berkeley.edu server under the ~ptps directory), I got a submission
+> confirmation.
+
+This is correctly set up, which is why this works -- but have a look at
+the permissions on your script:
+
+-rw-r--r--+ 1 ptps ocf 3322 2007-01-30 21:08 /services/http/users/p/ptps/form.php
+
+These permissions mean anyone on the OCF can read your (very weak) MySQL
+password.  I would suggest correcting the permissions on this file
+("chmod 600 /services/http/users/p/ptps/form.php" from the command line
+will do the trick) and changing your MySQL password (run "makemysql").
+If you have any other scripts containing your MySQL password, you'll
+want to check the permissions on those as well.
+
+-Steven Luo
+
+--7ZAtKRhVyVSsbBD2
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: Digital signature
+Content-Disposition: inline
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.6 (GNU/Linux)
+
+iD8DBQFFwEU/ZZIw+vJO0BIRArmPAJ4izIiYBCd+hnb2tE5awB1HNGlA1ACcDsg5
+cFeVsp6zaErYSUbvcyGD3JI=
+=GmH0
+-----END PGP SIGNATURE-----
+
+--7ZAtKRhVyVSsbBD2--
+
+From ptps@flood.OCF.Berkeley.EDU  Wed Jan 31 00:48:40 2007
+Return-Path: <steven@steven676.net>
+Received: from sandstorm.OCF.Berkeley.EDU (IDENT:0@sandstorm.OCF.Berkeley.EDU [192.58.221.218])
+	by war.OCF.Berkeley.EDU (8.13.7/8.9.3) with ESMTP+TLSv1/SSLv3 id l0V8E1Bf029786;
+	Wed, 31 Jan 2007 00:25:33 -0800 (PST)
+	(envelope-from steven@steven676.net)
+Received: from smtp-out1.berkeley.edu (smtp-out1.Berkeley.EDU [128.32.61.106])
+	by sandstorm.OCF.Berkeley.EDU (8.13.7/8.9.3) with ESMTP+TLSv1/SSLv3 id l0V7TRaQ018492;
+	Tue, 30 Jan 2007 23:30:05 -0800 (PST)
+	(envelope-from steven@steven676.net)
+Received: from asuc-wlan-net-5.airbears.berkeley.edu ([136.152.138.144] helo=sandcity.steven676.net)
+	by fe1.calmail with esmtpsa (TLSv1:AES256-SHA:256)
+	(Exim 4.65)
+	(auth plain:s_luo@berkeley.edu)
+	(envelope-from <steven@steven676.net>)
+	id 1HC9rB-0002B9-4u; Tue, 30 Jan 2007 23:26:13 -0800
+Received: by sandcity.steven676.net (Postfix, from userid 1000)
+	id 40987CC299; Tue, 30 Jan 2007 23:26:12 -0800 (PST)
+Date: Tue, 30 Jan 2007 23:26:11 -0800
+From: Steven Luo <sluo@OCF.Berkeley.EDU>
+To: ptps@OCF.Berkeley.EDU
+Cc: staff@OCF.Berkeley.EDU
+Subject: Re: mysql server account
+Message-ID: <20070131072611.GA18703@steven676.net>
+References: <1601.206.169.168.190.1170220988.squirrel@webmail.ocf.berkeley.edu>
+MIME-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="mYCpIKhGyMATD0i+"
+Content-Disposition: inline
+In-Reply-To: <1601.206.169.168.190.1170220988.squirrel@webmail.ocf.berkeley.edu>
+User-Agent: Mutt/1.5.13 (2006-08-11)
+X-Milter: Spamilter (Receiver: sandstorm.OCF.Berkeley.EDU; Sender-ip: 128.32.61.106; Sender-helo: smtp-out1.berkeley.edu;)
+X-Spam-Status: No, score=-2.5 required=5.0 tests=BAYES_00,FORGED_RCVD_HELO,
+	SPF_PASS autolearn=ham version=3.1.7
+X-Spam-Checker-Version: SpamAssassin 3.1.7 (2006-10-05)
+Status: R
+Content-Length: 1379
+X-Keywords:                                                                                                                        
+
+
+--mYCpIKhGyMATD0i+
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Tue, Jan 30, 2007 at 09:23:08PM -0800, ptps@OCF.Berkeley.EDU wrote:
+> To whom it may concern:
+>=20
+> I know this is extremely late, but we've only recently started re-doing
+> our website so we never really knew about the server move until now.
+>=20
+> There's a form on our ptps.org website (the form is at
+> http://www.ocf.berkeley.edu/~ptps/students/register.html) that used to
+> connect to our database on the death.ocf server. Under the assumption that
+> our account simply moved and not that it got deleted, I tried to log onto
+> the server through the SSH Secure File Transfer Client with our old
+> username and password. Predictably, it didn't work.
+
+It's been a long time since users were allowed to log in to death
+directly.  Use ocf.berkeley.edu to get one of our main login servers,
+=66rom where you will be able to access and modify your files.
+
+-Steven Luo
+OCF Staff
+
+--mYCpIKhGyMATD0i+
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: Digital signature
+Content-Disposition: inline
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.6 (GNU/Linux)
+
+iD8DBQFFwESTZZIw+vJO0BIRAqTzAJ9pH5zROEvHPye7EBxe+0hQ2mpPSQCcC9Or
+MkkTb2XwTCR991xhsjlmVz0=
+=lY0/
+-----END PGP SIGNATURE-----
+
+--mYCpIKhGyMATD0i+--
+
+From ptps@flood.OCF.Berkeley.EDU  Wed Jan 31 01:58:23 2007
+Return-Path: <yury@OCF.Berkeley.EDU>
+Received: from cyclone.OCF.Berkeley.EDU (IDENT:100@cyclone.OCF.Berkeley.EDU [192.58.221.226])
+	by war.OCF.Berkeley.EDU (8.13.7/8.9.3) with ESMTP id l0V9vw34005907;
+	Wed, 31 Jan 2007 01:57:59 -0800 (PST)
+	(envelope-from yury@OCF.Berkeley.EDU)
+Received: by cyclone.OCF.Berkeley.EDU (Postfix, from userid 9161)
+	id 5DF4F14393F; Wed, 31 Jan 2007 01:57:57 -0800 (PST)
+Date: Wed, 31 Jan 2007 01:57:57 -0800
+To: Steven Luo <sluo@OCF.Berkeley.EDU>
+Cc: ptps@OCF.Berkeley.EDU, staff@OCF.Berkeley.EDU
+Subject: Re: mysql server account
+Message-ID: <20070131095757.GA16616@OCF.Berkeley.EDU>
+References: <1601.206.169.168.190.1170220988.squirrel@webmail.ocf.berkeley.edu> <20070131072611.GA18703@steven676.net>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20070131072611.GA18703@steven676.net>
+User-Agent: Mutt/1.5.9i
+From: yury@OCF.Berkeley.EDU (Yury Arkady Sobolev)
+Status: R
+X-Status: A
+Content-Length: 1055
+X-Keywords:                                                                                                                        
+
+Additionally, the mysql server is mysql.ocf. Please use that instead.
+
+-Yury
+
+
+On Tue, Jan 30, 2007 at 11:26:11PM -0800, Steven Luo wrote:
+> On Tue, Jan 30, 2007 at 09:23:08PM -0800, ptps@OCF.Berkeley.EDU wrote:
+> > To whom it may concern:
+> > 
+> > I know this is extremely late, but we've only recently started re-doing
+> > our website so we never really knew about the server move until now.
+> > 
+> > There's a form on our ptps.org website (the form is at
+> > http://www.ocf.berkeley.edu/~ptps/students/register.html) that used to
+> > connect to our database on the death.ocf server. Under the assumption that
+> > our account simply moved and not that it got deleted, I tried to log onto
+> > the server through the SSH Secure File Transfer Client with our old
+> > username and password. Predictably, it didn't work.
+> 
+> It's been a long time since users were allowed to log in to death
+> directly.  Use ocf.berkeley.edu to get one of our main login servers,
+> from where you will be able to access and modify your files.
+> 
+> -Steven Luo
+> OCF Staff
+
+
+
+From ptps@flood.OCF.Berkeley.EDU  Wed Jan 31 09:36:55 2007
+Return-Path: <staff@OCF.Berkeley.EDU>
+Received: from conquest.OCF.Berkeley.EDU (conquest.OCF.Berkeley.EDU [192.58.221.248])
+	by war.OCF.Berkeley.EDU (8.13.7/8.9.3) with ESMTP id l0VHaqWB029222
+	for <ptps@mail.OCF.Berkeley.EDU>; Wed, 31 Jan 2007 09:36:53 -0800 (PST)
+	(envelope-from staff@OCF.Berkeley.EDU)
+Received: (from mysql@localhost)
+	by conquest.OCF.Berkeley.EDU (8.11.7p3+Sun/8.11.7) id l0VHapS21648
+	for ptps; Wed, 31 Jan 2007 09:36:51 -0800 (PST)
+Date: Wed, 31 Jan 2007 09:36:51 -0800 (PST)
+From: staff@OCF.Berkeley.EDU
+Message-Id: <200701311736.l0VHapS21648@conquest.OCF.Berkeley.EDU>
+X-Authentication-Warning: conquest.OCF.Berkeley.EDU: mysql set sender to staff@OCF.Berkeley.EDU using -r
+To: ptps@OCF.Berkeley.EDU
+Subject: MySQL account information
+Status: R
+Content-Length: 1219
+X-Keywords:                                                                                                                        
+
+Hello,
+
+An account has been created for you on our MySQL server:
+
+    Hostname: mysql.ocf.berkeley.edu
+    Username: ptps
+    Database: ptps
+
+The password needed to access your database should have been
+shown to you when you ran the 'makemysql' command. If you have lost
+the password, simply re-run 'makemysql' to get a new password.
+
+You should have complete access to any table named 'ptps.<table_name>'
+(i.e., the ptps database), but not to the rest of the server.
+You cannot create more databases, but you may create as many tables
+as you wish within your database. You can access the MySQL server
+from an OCF command prompt simply by typing:
+
+    mysql
+
+and entering your MySQL password when prompted. (Note: Please don't
+provide a password on the command line with the -p option, as anyone
+who happens to run a command like 'w' or 'ps' can see it plainly.)
+If you need to change your password, just re-run 'makemysql', which
+will generate a new password for your database.
+
+If you have any questions, first check our database support page,
+accessible at
+
+    http://docs.ocf.berkeley.edu/wiki/MySQL_support
+
+If your question is not addressed, then feel free to email us at
+
+    staff@OCF.Berkeley.EDU
+
+-OCF Staff
+
+From ptps@flood.OCF.Berkeley.EDU  Wed Jan 31 12:19:55 2007
+Return-Path: <yury@OCF.Berkeley.EDU>
+Received: from cyclone.OCF.Berkeley.EDU (IDENT:100@cyclone.OCF.Berkeley.EDU [192.58.221.226])
+	by war.OCF.Berkeley.EDU (8.13.7/8.9.3) with ESMTP id l0VKJoYM014175
+	for <ptps@OCF.Berkeley.EDU>; Wed, 31 Jan 2007 12:19:52 -0800 (PST)
+	(envelope-from yury@OCF.Berkeley.EDU)
+Received: by cyclone.OCF.Berkeley.EDU (Postfix, from userid 9161)
+	id 2FC481438C8; Wed, 31 Jan 2007 12:19:50 -0800 (PST)
+Date: Wed, 31 Jan 2007 12:19:50 -0800
+To: ptps@OCF.Berkeley.EDU
+Subject: Re: mysql server account
+Message-ID: <20070131201949.GA5468@OCF.Berkeley.EDU>
+References: <1601.206.169.168.190.1170220988.squirrel@webmail.ocf.berkeley.edu> <20070131072611.GA18703@steven676.net> <20070131095757.GA16616@OCF.Berkeley.EDU> <1025.206.169.168.190.1170264160.squirrel@webmail.ocf.berkeley.edu>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1025.206.169.168.190.1170264160.squirrel@webmail.ocf.berkeley.edu>
+User-Agent: Mutt/1.5.9i
+From: yury@OCF.Berkeley.EDU (Yury Arkady Sobolev)
+Status: R
+Content-Length: 1827
+X-Keywords:                                                                                                                        
+
+The username is your OCF username. If you forgot your password, you can
+run makemysql. Although, it shouldn't have changed. In any case, it
+should be safe enough to reset it.
+
+-Yury
+
+
+On Wed, Jan 31, 2007 at 09:22:40AM -0800, ptps@OCF.Berkeley.EDU wrote:
+> Thanks for all the suggestions, but aside from the weak form (which was
+> going to be rewritten), I can't access any of the compiled data. When I
+> logged into the mysql account (which I had already tried last night when I
+> realized that death.ocf wasn't allowed anymore), the password wasn't
+> accepted.
+> 
+> So I'm wondering if the user id is still ptps with the same password or not.
+> 
+> Thanks,
+> 
+> Andrea
+> 
+> > Additionally, the mysql server is mysql.ocf. Please use that instead.
+> >
+> > -Yury
+> >
+> >
+> > On Tue, Jan 30, 2007 at 11:26:11PM -0800, Steven Luo wrote:
+> >> On Tue, Jan 30, 2007 at 09:23:08PM -0800, ptps@OCF.Berkeley.EDU wrote:
+> >> > To whom it may concern:
+> >> >
+> >> > I know this is extremely late, but we've only recently started
+> >> re-doing
+> >> > our website so we never really knew about the server move until now.
+> >> >
+> >> > There's a form on our ptps.org website (the form is at
+> >> > http://www.ocf.berkeley.edu/~ptps/students/register.html) that used to
+> >> > connect to our database on the death.ocf server. Under the assumption
+> >> that
+> >> > our account simply moved and not that it got deleted, I tried to log
+> >> onto
+> >> > the server through the SSH Secure File Transfer Client with our old
+> >> > username and password. Predictably, it didn't work.
+> >>
+> >> It's been a long time since users were allowed to log in to death
+> >> directly.  Use ocf.berkeley.edu to get one of our main login servers,
+> >> from where you will be able to access and modify your files.
+> >>
+> >> -Steven Luo
+> >> OCF Staff
+> >
+> >
+> >
+
+From ptps@flood.OCF.Berkeley.EDU  Wed Jan 31 18:39:20 2007
+Return-Path: <staff@OCF.Berkeley.EDU>
+Received: from apocalypse.OCF.Berkeley.EDU (IDENT:1@apocalypse.OCF.Berkeley.EDU [192.58.221.245])
+	by war.OCF.Berkeley.EDU (8.13.7/8.9.3) with ESMTP id l112dAgi016299
+	for <ptps@mail.OCF.Berkeley.EDU>; Wed, 31 Jan 2007 18:39:15 -0800 (PST)
+	(envelope-from staff@OCF.Berkeley.EDU)
+Received: (from mysql@localhost)
+	by apocalypse.OCF.Berkeley.EDU (8.11.7p3+Sun/8.11.7) id l112d6g04813
+	for ptps; Wed, 31 Jan 2007 18:39:06 -0800 (PST)
+Date: Wed, 31 Jan 2007 18:39:06 -0800 (PST)
+From: staff@OCF.Berkeley.EDU
+Message-Id: <200702010239.l112d6g04813@apocalypse.OCF.Berkeley.EDU>
+X-Authentication-Warning: apocalypse.OCF.Berkeley.EDU: mysql set sender to staff@OCF.Berkeley.EDU using -r
+To: ptps@OCF.Berkeley.EDU
+Subject: MySQL account information
+Status: R
+Content-Length: 1219
+X-Keywords:                                                                                                                        
+
+Hello,
+
+An account has been created for you on our MySQL server:
+
+    Hostname: mysql.ocf.berkeley.edu
+    Username: ptps
+    Database: ptps
+
+The password needed to access your database should have been
+shown to you when you ran the 'makemysql' command. If you have lost
+the password, simply re-run 'makemysql' to get a new password.
+
+You should have complete access to any table named 'ptps.<table_name>'
+(i.e., the ptps database), but not to the rest of the server.
+You cannot create more databases, but you may create as many tables
+as you wish within your database. You can access the MySQL server
+from an OCF command prompt simply by typing:
+
+    mysql
+
+and entering your MySQL password when prompted. (Note: Please don't
+provide a password on the command line with the -p option, as anyone
+who happens to run a command like 'w' or 'ps' can see it plainly.)
+If you need to change your password, just re-run 'makemysql', which
+will generate a new password for your database.
+
+If you have any questions, first check our database support page,
+accessible at
+
+    http://docs.ocf.berkeley.edu/wiki/MySQL_support
+
+If your question is not addressed, then feel free to email us at
+
+    staff@OCF.Berkeley.EDU
+
+-OCF Staff
+
+From ptps@flood.OCF.Berkeley.EDU  Wed Jan 31 20:43:13 2007
+Return-Path: <staff@OCF.Berkeley.EDU>
+Received: from apocalypse.OCF.Berkeley.EDU (IDENT:0@apocalypse.OCF.Berkeley.EDU [192.58.221.245])
+	by war.OCF.Berkeley.EDU (8.13.7/8.9.3) with ESMTP id l114fpoK025744
+	for <ptps@mail.OCF.Berkeley.EDU>; Wed, 31 Jan 2007 20:42:18 -0800 (PST)
+	(envelope-from staff@OCF.Berkeley.EDU)
+Received: (from mysql@localhost)
+	by apocalypse.OCF.Berkeley.EDU (8.11.7p3+Sun/8.11.7) id l112Wch04535
+	for ptps; Wed, 31 Jan 2007 18:32:38 -0800 (PST)
+Date: Wed, 31 Jan 2007 18:32:38 -0800 (PST)
+From: staff@OCF.Berkeley.EDU
+Message-Id: <200702010232.l112Wch04535@apocalypse.OCF.Berkeley.EDU>
+X-Authentication-Warning: apocalypse.OCF.Berkeley.EDU: mysql set sender to staff@OCF.Berkeley.EDU using -r
+To: ptps@OCF.Berkeley.EDU
+Subject: MySQL account information
+Status: R
+Content-Length: 1219
+X-Keywords:                                                                                                                        
+
+Hello,
+
+An account has been created for you on our MySQL server:
+
+    Hostname: mysql.ocf.berkeley.edu
+    Username: ptps
+    Database: ptps
+
+The password needed to access your database should have been
+shown to you when you ran the 'makemysql' command. If you have lost
+the password, simply re-run 'makemysql' to get a new password.
+
+You should have complete access to any table named 'ptps.<table_name>'
+(i.e., the ptps database), but not to the rest of the server.
+You cannot create more databases, but you may create as many tables
+as you wish within your database. You can access the MySQL server
+from an OCF command prompt simply by typing:
+
+    mysql
+
+and entering your MySQL password when prompted. (Note: Please don't
+provide a password on the command line with the -p option, as anyone
+who happens to run a command like 'w' or 'ps' can see it plainly.)
+If you need to change your password, just re-run 'makemysql', which
+will generate a new password for your database.
+
+If you have any questions, first check our database support page,
+accessible at
+
+    http://docs.ocf.berkeley.edu/wiki/MySQL_support
+
+If your question is not addressed, then feel free to email us at
+
+    staff@OCF.Berkeley.EDU
+
+-OCF Staff
+
